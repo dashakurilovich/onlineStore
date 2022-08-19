@@ -1,10 +1,11 @@
 .card {
   border: 1px solid #F3F3F3;
-  padding: 30px;
-  width: 210px;
-  height: 260px;
+  width: 200px;
+  height: 250px;
+  padding: 20px;
   border-radius: 40px;
-  margin-right: 40px;
+  margin-right: 20px;
+  margin-bottom: 40px;
   transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
   display: flex;
   flex-direction: column;
@@ -18,6 +19,10 @@
   .favorite {
     position: absolute;
     cursor: pointer;
+  }
+  .photoSneakers {
+    margin-top: 20px;
+    margin-left: 33px;
   }
 
   h5 {
@@ -50,13 +55,7 @@
       font-size: 14px;
     }
 
-    .button {
-      width: 32px;
-      height: 32px;
-      background: #FFFFFF;
-      border: 1px solid #F2F2F2;
-      border-radius: 8px;
-      box-sizing: border-box;
+    .plus {
       cursor: pointer;
     }
   }

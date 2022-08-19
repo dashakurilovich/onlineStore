@@ -1,16 +1,19 @@
+import s from './Header.module.scss'
 
-function Header() {
+
+function Header(props) {
+
   return (
     <header>
-      <div className='headerLeft'>
+      <div className={s.headerLeft}>
         <img width={40} height={40} src='/img/logo.png' />
-        <div className='headerInfo'>
+        <div className={s.headerInfo}>
           <h3>React sneakers</h3>
           <p>Магазин лучших кроссовок</p>
         </div>
       </div>
-      <ul className='headerRight'>
-        <li>
+      <ul className={s.headerRight}>
+        <li onClick={props.onClickCart} className={s.price}>
           <img width={18} height={17} src='/img/cart.svg' />
           <span>1205 руб.</span>
         </li>
