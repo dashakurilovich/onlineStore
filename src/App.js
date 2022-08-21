@@ -1,12 +1,13 @@
 
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import s from './App.module.scss';
 import Card from './components/Card';
 import Header from './components/Header/Header';
 import Drawer from './components/Drawer/Drawer';
 
 const arr = []
-
 
 function App(props) {
 
@@ -17,15 +18,19 @@ function App(props) {
 
 
   useEffect(() => {
-    fetch('https://62fecc1ba85c52ee483cd09f.mockapi.io/items').then(res => {
-      return res.json();
-    })
-      .then((json) => {
-        setItems(json);
-      })
+    axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/items')
+      .then((res) => {
+        setItems(res.data)
+      });
+    axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart')
+      .then((res) => {
+        setCartItems(res.data)
+      });
+
   }, [])
 
   const onAddToCart = (obj) => {
+    axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart', obj)
     setCartItems(prev => [...prev, obj])
   }
 
@@ -58,7 +63,7 @@ function App(props) {
 
         <div className={s.sneakers}>
           {
-            items.map((item, index) =>
+            items.filter((item) => item.title.toLowerCase().includes(searchValue)).map((item, index) =>
               <Card
                 key={index}
                 title={item.title}
