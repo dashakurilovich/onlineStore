@@ -1,34 +1,26 @@
 import s from './Drawer.module.scss'
 
 
-function Drawer(props) {
+function Drawer({ onClose, items = [] }) {
   return (
     <div className={s.overlay}>
       <div className={s.drawer} >
         <h2>Корзина
-          <img onClick={props.onClose} className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
+          <img onClick={onClose} className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
         </h2>
         <div className={s.items}>
-          <div className={s.cartItem}>
-            <div style={{
-              backgroundImage: 'url(img/sneakers/1.jpg)'
-            }} className={s.cartItemImg}>  </div>
-            <div className={s.cartDescribe}>
-              <p >Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+          {items.map((obj) => (
+            <div className={s.cartItem}>
+              <div style={{
+                backgroundImage: `url(${obj.imageUrl})`
+              }} className={s.cartItemImg}>  </div>
+              <div className={s.cartDescribe}>
+                <p >{obj.title}</p>
+                <b>{obj.price} руб.</b>
+              </div>
+              <img className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
             </div>
-            <img className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
-          </div>
-          <div className={s.cartItem}>
-            <div style={{
-              backgroundImage: 'url(img/sneakers/2.jpg)'
-            }} className={s.cartItemImg}>  </div>
-            <div className={s.cartDescribe}>
-              <p >Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
-            </div>
-            <img className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
-          </div>
+          ))}
         </div>
         <div className={s.cartTotalBlock}>
           <ul >
