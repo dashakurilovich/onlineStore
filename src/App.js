@@ -32,6 +32,12 @@ function App(props) {
   const onAddToCart = (obj) => {
     axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart', obj)
     setCartItems(prev => [...prev, obj])
+  };
+
+  const onRemoveItem = (id) => {
+    //axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${id}`)
+    // eslint-disable-next-line eqeqeq
+    setCartItems((prev) => prev.filter(item => item.id != id));
   }
 
   const onChangeSearchInput = (e) => setSearchValue(e.target.value)
@@ -43,13 +49,14 @@ function App(props) {
 
   return (
     <div className={s.wrapper}>
-      {cartOpened && <Drawer items={cartItems} onClose={() => { setCartOpened(false) }} />}
+      {cartOpened && <Drawer items={cartItems} onClose={() => { setCartOpened(false) }} onRemove={onRemoveItem} />}
       <Header onClickCart={() => { setCartOpened(true) }} />
       <div className={s.content}>
         <div className={s.middleBlock}>
           <h1>
             {searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}
           </h1>
+
           <div className={s.searchBlock}>
             <img width={14} height={14} src='/img/lupa.svg' alt='Search' className='lupa' />
             <input onChange={onChangeSearchInput} value={searchValue} placeholder='Поиск....' />

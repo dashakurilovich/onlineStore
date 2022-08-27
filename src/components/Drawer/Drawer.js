@@ -1,7 +1,7 @@
 import s from './Drawer.module.scss'
 
 
-function Drawer({ onClose, items = [] }) {
+function Drawer({ onClose, onRemove, items = [] }) {
   return (
     <div className={s.overlay}>
       <div className={s.drawer} >
@@ -18,7 +18,7 @@ function Drawer({ onClose, items = [] }) {
                 <p >{obj.title}</p>
                 <b>{obj.price} руб.</b>
               </div>
-              <img className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
+              <img onClick={() => onRemove(obj.id)} className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
             </div>
           ))}
         </div>
