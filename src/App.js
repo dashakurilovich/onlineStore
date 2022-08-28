@@ -35,7 +35,7 @@ function App(props) {
   };
 
   const onRemoveItem = (id) => {
-    //axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${id}`)
+    axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${id}`)
     // eslint-disable-next-line eqeqeq
     setCartItems((prev) => prev.filter(item => item.id != id));
   }

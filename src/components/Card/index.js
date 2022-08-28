@@ -4,16 +4,21 @@ import s from './Card.module.scss'
 function Card({ onClickFavorite, imageUrl, title, price, onPlus }) {
 
   const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setisFavorite] = useState(false);
 
   const onClickPlus = () => {
-    onPlus({imageUrl, title, price});
+    onPlus({ imageUrl, title, price });
     setIsAdded(!isAdded)
+  }
+
+  const onFavorite =() => {
+    setisFavorite(!isFavorite)
   }
 
   return (
     <div className={s.card}>
-      <div className={s.favorite}>
-        <img src='/img/heart-unliked.svg' alt='Unliked' onClick={onClickFavorite} />
+      <div className={s.favorite} onClick={onFavorite}>
+        <img src={isFavorite ? '/img/heart-liked.svg' :'/img/heart-unliked.svg'} alt='Unliked' onClick={onClickFavorite} />
       </div>
       <img className={s.photoSneakers} width={133} height={112} src={imageUrl} alt='Sneakers' />
       <h5>{title}</h5>
