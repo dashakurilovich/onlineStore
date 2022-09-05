@@ -1,13 +1,14 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Route,Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 
 
 import s from './App.module.scss';
 import Header from './components/Header/Header';
 import Drawer from './components/Drawer/Drawer';
 import Home from './pages/Home';
+import Favorites from './pages/Favorites';
 
 const arr = []
 
@@ -72,7 +73,9 @@ function App(props) {
           onAddToFavorite={onAddToFavorite}
           onAddToCart={onAddToCart}
         />}>
-
+        </Route>
+        <Route path="/favorites" element={<Favorites
+        />}>
         </Route>
       </Routes>
 
