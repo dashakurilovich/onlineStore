@@ -21,9 +21,11 @@ function Header(props) {
           <img width={18} height={17} src='/img/cart.svg' alt='Cart' />
           <span>1205 руб.</span>
         </li>
+        <Link to="/favorites">
         <li className={s.price}>
           <img width={20} height={20} src='/img/favorite.svg' alt='Favorite' />
         </li>
+        </Link>
         <li>
           <img width={20} height={20} src='/img/user.svg' alt='User' />
         </li>

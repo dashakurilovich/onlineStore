@@ -27,11 +27,9 @@ function Home({ items, searchValue, onChangeSearchInput, handleClear, onAddToFav
           items.filter((item) => item.title.toLowerCase().includes(searchValue)).map((item, index) =>
             <Card
               key={index}
-              title={item.title}
-              price={item.price}
-              imageUrl={item.imageUrl}
               onFavorite={(obj) => onAddToFavorite(obj)}
               onPlus={(obj) => onAddToCart(obj)}
+              {...item}
             />)
         }
       </div>

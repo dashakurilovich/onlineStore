@@ -47,9 +47,15 @@ function App(props) {
     setCartItems((prev) => prev.filter(item => item.id != id));
   }
 
-  const onAddToFavorite = (obj) => {
-    axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites')
-    setFavorites(prev => [...prev, obj])
+  const onAddToFavorite = async (obj) => {
+    if (favorites.find((favObj) => favObj.id === obj.id)) {
+      axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites/${obj.id}`)
+      setFavorites((prev) => prev.filter((item) => item.id != obj.id))
+    } else {
+      const { data } = await axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites', obj)
+      setFavorites((prev) => [...prev, data])
+    }
+
   }
 
   const onChangeSearchInput = (e) => setSearchValue(e.target.value)
@@ -75,6 +81,8 @@ function App(props) {
         />}>
         </Route>
         <Route path="/favorites" element={<Favorites
+          items={favorites}
+          onAddToFavorite={onAddToFavorite}
         />}>
         </Route>
       </Routes>

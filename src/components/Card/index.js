@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import s from './Card.module.scss'
 
-function Card({ onFavorite, imageUrl, title, price, onPlus }) {
+function Card({ id, onFavorite, imageUrl, title, price, onPlus, favorited }) {
 
   const [isAdded, setIsAdded] = useState(false);
-  const [isFavorite, setisFavorite] = useState(false);
+  const [isFavorite, setisFavorite] = useState(favorited);
 
   const onClickPlus = () => {
     onPlus({ imageUrl, title, price });
@@ -12,14 +12,14 @@ function Card({ onFavorite, imageUrl, title, price, onPlus }) {
   }
 
   const onClickFavorite = () => {
-    onFavorite({ imageUrl, title, price });
+    onFavorite({id, imageUrl, title, price });
     setisFavorite(!isFavorite)
   }
 
   return (
     <div className={s.card}>
       <div className={s.favorite} onClick={onClickFavorite}>
-        <img src={isFavorite ? '/img/heart-liked.svg' : '/img/heart-unliked.svg'} alt='Unliked'  />
+        <img src={isFavorite ? '/img/heart-liked.svg' : '/img/heart-unliked.svg'} alt='Unliked' />
       </div>
       <img className={s.photoSneakers} width={133} height={112} src={imageUrl} alt='Sneakers' />
       <h5>{title}</h5>
