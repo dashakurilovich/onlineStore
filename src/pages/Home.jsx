@@ -2,7 +2,7 @@ import Card from '../components/Card';
 import s from './Home.module.scss';
 
 
-function Home({ items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart }) {
+function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart }) {
   return (
 
     <div className={s.content}>
@@ -27,6 +27,7 @@ function Home({ items, searchValue, onChangeSearchInput, handleClear, onAddToFav
           items.filter((item) => item.title.toLowerCase().includes(searchValue)).map((item, index) =>
             <Card
               key={index}
+              added={cartItems.some(obj => obj.id === item.id)}
               onFavorite={(obj) => onAddToFavorite(obj)}
               onPlus={(obj) => onAddToCart(obj)}
               {...item}

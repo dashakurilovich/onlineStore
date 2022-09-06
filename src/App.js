@@ -38,26 +38,36 @@ function App(props) {
   }, [])
 
   const onAddToCart = (obj) => {
-    axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart', obj)
-    setCartItems(prev => [...prev, obj])
+    console.log(obj);
+    if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+      axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${obj.id}`)
+      setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
+    } else {
+      axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart', obj)
+      setCartItems(prev => [...prev, obj])
+    }
   };
 
   const onRemoveItem = (id) => {
     axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${id}`)
-    setCartItems((prev) => prev.filter(item => item.id != id));
+    setCartItems((prev) => prev.filter(item => item.id !== id));
   }
 
   const onAddToFavorite = async (obj) => {
-    if (favorites.find((favObj) => favObj.id === obj.id)) {
-      axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites/${obj.id}`)
-      setFavorites((prev) => prev.filter((item) => item.id != obj.id))
-    } else {
-      const { data } = await axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites', obj)
-      setFavorites((prev) => [...prev, data])
+    try {
+      if (favorites.find((favObj) => favObj.id === obj.id)) {
+        axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites/${obj.id}`)
+        setFavorites((prev) => prev.filter((item) => item.id != obj.id))
+      }
+
+      else {
+        const { data } = await axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites', obj)
+        setFavorites((prev) => [...prev, data])
+      }
+    } catch (error) {
+      alert('Не удалось добавить в закладки')
     }
-
   }
-
   const onChangeSearchInput = (e) => setSearchValue(e.target.value)
 
   const handleClear = () => {
@@ -73,6 +83,7 @@ function App(props) {
       <Routes >
         <Route path="/" element={<Home
           items={items}
+          cartItems={cartItems}
           searchValue={searchValue}
           onChangeSearchInput={onChangeSearchInput}
           handleClear={handleClear}
