@@ -21,16 +21,16 @@ function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear,
             alt='Clear' />}
         </div>
       </div>
-
       <div className={s.sneakers}>
         {
           items.filter((item) => item.title.toLowerCase().includes(searchValue)).map((item, index) =>
             <Card
               key={index}
-              added={cartItems.some(obj => obj.id === item.id)}
+              added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
               onFavorite={(obj) => onAddToFavorite(obj)}
               onPlus={(obj) => onAddToCart(obj)}
               {...item}
+              loading
             />)
         }
       </div>

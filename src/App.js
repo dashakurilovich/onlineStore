@@ -22,19 +22,16 @@ function App(props) {
 
 
   useEffect(() => {
-    axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/items')
-      .then((res) => {
-        setItems(res.data)
-      });
-    axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites')
-      .then((res) => {
-        setFavorites(res.data)
-      });
-    axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart')
-      .then((res) => {
-        setCartItems(res.data)
-      });
+    async function fetchData() {
+      const cartResponse = await axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart');
+      const favoritesResponse = await axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites');
+      const itemsResponse = await axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/items');
 
+      setCartItems(cartResponse.data)
+      setFavorites(favoritesResponse.data)
+      setItems(itemsResponse.data)
+    }
+    fetchData();
   }, [])
 
   const onAddToCart = (obj) => {
