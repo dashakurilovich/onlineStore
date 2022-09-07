@@ -32,7 +32,7 @@ function Card({ id,
       {
         loading ? <ContentLoader
           speed={2}
-          width={210}
+          width={200}
           height={260}
           viewBox="0 0 210 260"
           backgroundColor="#f3f3f3"
