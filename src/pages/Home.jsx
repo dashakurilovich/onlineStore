@@ -2,7 +2,32 @@ import Card from '../components/Card';
 import s from './Home.module.scss';
 
 
-function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart }) {
+function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart, isLoading }) {
+
+
+  const renderItems = () => {
+
+    const filteredItems = items.filter((item) =>
+      item.title.toLowerCase().includes(searchValue.toLowerCase()));
+    return (
+      isLoading
+        ? [...Array(10)]
+        : filteredItems)
+      .map((item, index) => (
+        < Card
+          key={index}
+          added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
+          onFavorite={(obj) => onAddToFavorite(obj)
+          }
+          onPlus={(obj) => onAddToCart(obj)}
+          {...item}
+          loading={isLoading}
+        />)
+      )
+  }
+
+
+
   return (
 
     <div className={s.content}>
@@ -23,15 +48,7 @@ function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear,
       </div>
       <div className={s.sneakers}>
         {
-          items.filter((item) => item.title.toLowerCase().includes(searchValue)).map((item, index) =>
-            <Card
-              key={index}
-              added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
-              onFavorite={(obj) => onAddToFavorite(obj)}
-              onPlus={(obj) => onAddToCart(obj)}
-              {...item}
-              loading
-            />)
+          renderItems()
         }
       </div>
 

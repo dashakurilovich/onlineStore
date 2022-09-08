@@ -31,22 +31,22 @@ function Card({ id,
 
       {
         loading ? <ContentLoader
-          speed={2}
-          width={200}
-          height={260}
-          viewBox="0 0 210 260"
-          backgroundColor="#f3f3f3"
-          foregroundColor="#ecebeb"
-        >
-          <circle cx="570" cy="549" r="15" />
-          <rect x="505" y="540" rx="2" ry="2" width="140" height="10" />
-          <rect x="522" y="541" rx="2" ry="2" width="140" height="10" />
-          <rect x="0" y="28" rx="10" ry="10" width="190" height="90" />
-          <rect x="-3" y="141" rx="5" ry="5" width="190" height="15" />
-          <rect x="0" y="166" rx="5" ry="5" width="150" height="15" />
-          <rect x="479" y="349" rx="8" ry="8" width="80" height="24" />
-          <rect x="156" y="225" rx="10" ry="10" width="32" height="32" />
-          <rect x="0" y="225" rx="5" ry="5" width="110" height="24" />
+        speed={2}
+        width={210}
+        height={260}
+        viewBox="0 0 210 260"
+        backgroundColor="#f3f3f3"
+        foregroundColor="#ecebeb"
+      >
+        <circle cx="570" cy="549" r="15" /> 
+        <rect x="505" y="540" rx="2" ry="2" width="140" height="10" /> 
+        <rect x="522" y="541" rx="2" ry="2" width="140" height="10" /> 
+        <rect x="35" y="5" rx="10" ry="10" width="120" height="112" /> 
+        <rect x="6" y="142" rx="5" ry="5" width="185" height="20" /> 
+        <rect x="6" y="169" rx="5" ry="5" width="130" height="20" /> 
+        <rect x="479" y="349" rx="8" ry="8" width="80" height="24" /> 
+        <rect x="153" y="218" rx="10" ry="10" width="32" height="32" /> 
+        <rect x="6" y="222" rx="5" ry="5" width="110" height="24" />
         </ContentLoader> :
           <>
             <div className={s.favorite} onClick={onClickFavorite}>

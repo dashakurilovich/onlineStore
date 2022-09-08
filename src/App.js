@@ -19,13 +19,17 @@ function App(props) {
   const [favorites, setFavorites] = useState([])
   const [searchValue, setSearchValue] = useState('')
   const [cartOpened, setCartOpened] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
 
 
   useEffect(() => {
     async function fetchData() {
+      setIsLoading(true);
       const cartResponse = await axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart');
       const favoritesResponse = await axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites');
       const itemsResponse = await axios.get('https://62fecc1ba85c52ee483cd09f.mockapi.io/items');
+
+      setIsLoading(false);
 
       setCartItems(cartResponse.data)
       setFavorites(favoritesResponse.data)
@@ -86,6 +90,7 @@ function App(props) {
           handleClear={handleClear}
           onAddToFavorite={onAddToFavorite}
           onAddToCart={onAddToCart}
+          isLoading={isLoading}
         />}>
         </Route>
         <Route path="/favorites" element={<Favorites
