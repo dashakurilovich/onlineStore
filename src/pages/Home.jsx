@@ -1,5 +1,7 @@
+
 import Card from '../components/Card';
 import s from './Home.module.scss';
+
 
 
 function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart, isLoading }) {
@@ -16,12 +18,11 @@ function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear,
       .map((item, index) => (
         < Card
           key={index}
-          added={cartItems.some(obj => Number(obj.id) === Number(item.id))}
           onFavorite={(obj) => onAddToFavorite(obj)
           }
           onPlus={(obj) => onAddToCart(obj)}
-          {...item}
           loading={isLoading}
+          {...item}
         />)
       )
   }
