@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+
 import AppContext from './context';
 import Card from '../components/Card';
 import s from './Home.module.scss';

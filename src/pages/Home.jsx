@@ -1,10 +1,12 @@
+import { useContext } from 'react';
 
 import Card from '../components/Card';
 import s from './Home.module.scss';
+import AppContext from '../pages/context';
 
 
 
-function Home({ cartItems, items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart, isLoading }) {
+function Home({  items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart, isLoading }) {
 
 
   const renderItems = () => {

@@ -38,11 +38,11 @@ function App(props) {
   }, [])
 
   const onAddToCart = (obj) => {
-    if (cartItems.find((item) => item.id === obj.id)) {
+    if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
       axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${obj.id}`)
-      setCartItems(prev => prev.filter(item => item.id !== obj.id))
+      setCartItems(prev => prev.filter(item => Number(item.id) !== Number(obj.id)))
     } else {
-      axios.post(`https://62fecc1ba85c52ee483cd09f.mockapi.io/cart/${obj.id}`, obj)
+      axios.post('https://62fecc1ba85c52ee483cd09f.mockapi.io/cart', obj)
       setCartItems(prev => [...prev, obj])
     }
   };
@@ -54,9 +54,9 @@ function App(props) {
 
   const onAddToFavorite = async (obj) => {
     try {
-      if (favorites.find((favObj) => favObj.id === obj.id)) {
+      if (favorites.find((favObj) => Number(favObj.id) === Number(obj.id))) {
         axios.delete(`https://62fecc1ba85c52ee483cd09f.mockapi.io/favorites/${obj.id}`)
-        setFavorites((prev) => prev.filter((item) => item.id !== obj.id))
+        setFavorites((prev) => prev.filter((item) => Number(item.id) !== Number(obj.id)))
       }
 
       else {
@@ -78,7 +78,7 @@ function App(props) {
   }
 
   return (
-    <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, onAddToFavorite }}>
+    <AppContext.Provider value={{ items, cartItems, favorites, isItemAdded, onAddToFavorite, setCartOpened, setCartItems }}>
       <div className={s.wrapper}>
         {cartOpened && <Drawer items={cartItems} onClose={() => { setCartOpened(false) }} onRemove={onRemoveItem} />}
         <Header onClickCart={() => { setCartOpened(true) }} />
