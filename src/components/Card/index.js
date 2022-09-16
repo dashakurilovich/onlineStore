@@ -16,15 +16,15 @@ function Card({
 
   const { isItemAdded } = useContext(AppContext);
   const [isFavorite, setIsFavorite] = useState(favorited);
+  const obj = { id, parentId: id, title, imageUrl, price }
 
-  console.log(title, isItemAdded(id));
 
   const onClickPlus = () => {
-    onPlus({ id, title, imageUrl, price });
+    onPlus(obj);
   }
 
   const onClickFavorite = () => {
-    onFavorite({ id, imageUrl, title, price });
+    onFavorite(obj);
     setIsFavorite(!isFavorite)
   }
 
@@ -51,9 +51,9 @@ function Card({
           <rect x="6" y="222" rx="5" ry="5" width="110" height="24" />
         </ContentLoader> :
           <>
-            <div className={s.favorite} onClick={onClickFavorite}>
+            {onFavorite && (<div className={s.favorite} onClick={onClickFavorite}>
               <img src={isFavorite ? '/img/heart-liked.svg' : '/img/heart-unliked.svg'} alt='Unliked' />
-            </div>
+            </div>)}
             <img className={s.photoSneakers} width={133} height={112} src={imageUrl} alt='Sneakers' />
             <h5>{title}</h5>
             <div className={s.cardWrapper}>
@@ -61,11 +61,11 @@ function Card({
                 <span>Цена:</span>
                 <b>{price} руб.</b>
               </div>
-              <img
+              {onPlus && <img
                 className={s.plus}
                 onClick={onClickPlus}
                 src={isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
-                alt='Plus' />
+                alt='Plus' />}
             </div>
           </>
       }

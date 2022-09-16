@@ -1,3 +1,4 @@
+
 .overlay {
   position: absolute;
   left: 0;
@@ -6,11 +7,11 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1;
-
+  
   .drawer {
     position: absolute;
     width: 420px;
-    height: 100vh;
+    height: 92%;
     right: 0;
     top: 0;
     padding: 30px;
@@ -68,11 +69,12 @@
       flex: 1;
 
       .items {
+        display: flex;
         overflow: auto;
         margin-top: 30px;
         margin-bottom: 30px;
-        flex: 1;
-
+        flex-direction: column;
+        flex: 1 ;
         .cartItem {
           display: flex;
           align-items: center;
@@ -150,45 +152,43 @@
 
       }
     }
-  }
 
-  .greenButton {
-    position: relative;
-    width: 100%;
-    height: 55px;
-    background: #9DD558;
-    border-radius: 18px;
-    border: 0;
-    color: white;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.1s ease-in-out;
 
-  
 
-    &:hover {
-      background: lighten($color: #a7f448, $amount: 5%);
-    }
+    .greenButton {
+      position: relative;
+      width: 100%;
+      height: 55px;
+      background: #9DD558;
+      border-radius: 18px;
+      border: 0;
+      color: white;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
 
-    &:active {
-      background: darken($color: #a7f448, $amount: 5%);
-    }
 
-    &:hover {
-      img {
-        transform: translateX(5px);
+      &:hover {
+        background: lighten($color: #a7f448, $amount: 5%);
+      }
+
+      &:active {
+        background: darken($color: #a7f448, $amount: 5%);
+      }
+
+      &:hover {
+        img {
+          transform: translateX(5px);
+        }
+      }
+
+      &:disabled {
+        background-color: #DFDFDF;
+        cursor: default;
       }
     }
-
-    &:disabled {
-      background-color: #DFDFDF;
-      cursor: default;
-    }
-    &:disabled {
-      animation: button-loading 0.6 ease-in-out infinite;
-    }
   }
+
 }
 
 @keyframes button-loading {
