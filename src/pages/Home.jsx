@@ -1,9 +1,8 @@
-import { useContext } from 'react';
 
 import Card from '../components/Card';
 import s from './Home.module.scss';
-import AppContext from '../pages/context';
-
+import lupa from '../assests/img/lupa.svg';
+import remove from '../assests/img/remove.svg';
 
 
 function Home({  items, searchValue, onChangeSearchInput, handleClear, onAddToFavorite, onAddToCart, isLoading }) {
@@ -40,12 +39,12 @@ function Home({  items, searchValue, onChangeSearchInput, handleClear, onAddToFa
         </h1>
 
         <div className={s.searchBlock}>
-          <img width={14} height={14} src='/img/lupa.svg' alt='Search' className='lupa' />
+          <img width={14} height={14} src={lupa} alt='Search' className='lupa' />
           <input onChange={onChangeSearchInput} value={searchValue} placeholder='Поиск....' />
           {searchValue && <img
             onClick={handleClear}
             className={s.removeBtn}
-            src='/img/btn-remove.svg'
+            src={remove}
             alt='Clear' />}
         </div>
       </div>

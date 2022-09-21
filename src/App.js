@@ -102,7 +102,6 @@ function App(props) {
   }
 
   const isItemAdded = (id) => {
-    console.log(cartItems, 2);
     return cartItems.some((obj) => Number(obj.parentId) === Number(id))
   }
 

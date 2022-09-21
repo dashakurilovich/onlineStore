@@ -4,6 +4,11 @@ import axios from 'axios';
 import Info from '../Info';
 import s from './Drawer.module.scss'
 import { useCart } from '../hooks/useCart';
+import remove from '../../assests/img/remove.svg';
+import arrow from '../../assests/img/arrow.svg';
+import completeOrder from '../../assests/img/completeOrder.jpg';
+import emptyCart from '../../assests/img/emptyCart.jpg';
+
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -43,7 +48,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
     <div className={s.overlay}>
       <div className={s.drawer} >
         <h2>Корзина
-          <img onClick={onClose} className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
+          <img onClick={onClose} className={s.removeBtn} src={remove} alt='Remove' />
         </h2>
 
         {
@@ -60,7 +65,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
                       <p >{obj.title}</p>
                       <b>{obj.price} руб.</b>
                     </div>
-                    <img onClick={() => onRemove(obj.id)} className={s.removeBtn} src='/img/btn-remove.svg' alt='Remove' />
+                    <img onClick={() => onRemove(obj.id)} className={s.removeBtn} src={remove} alt='Remove' />
                   </div>
                 ))}
               </div>
@@ -77,14 +82,14 @@ function Drawer({ onClose, onRemove, items = [] }) {
                     <b>{totalPrice / 100 * 5} руб.</b>
                   </li>
                 </ul>
-                <button disabled={isLoading} onClick={onClickOrder} className={s.greenButton}>Оформить заказ <img className={s.arrowBtn} src='/img/arrow.svg' alt='Arrow' /> </button>
+                <button disabled={isLoading} onClick={onClickOrder} className={s.greenButton}>Оформить заказ <img className={s.arrowBtn} src={arrow} alt='Arrow' /> </button>
               </div>
             </div>
             :
             <Info
               title={isOrderComplete ? "Заказ оформлен!" : "Корзина пустая"}
               description={isOrderComplete ? `Ваш заказ №${orderId} скоро будет передан курьерской доставке` : "Добавьте хотя бы одну пару кроссовок, чтобы сделать заказ."}
-              image={isOrderComplete ? "/img/complete-order.jpg" : "/img/emptyCart.jpg"}
+              image={isOrderComplete ? `${completeOrder}` : `${emptyCart}`}
             />
         }
 

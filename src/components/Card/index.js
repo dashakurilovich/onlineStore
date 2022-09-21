@@ -1,7 +1,14 @@
 import { useContext, useState } from 'react';
-import s from './Card.module.scss'
 import ContentLoader from 'react-content-loader';
+
+
+import s from './Card.module.scss'
 import AppContext from '../../pages/context';
+import heartLiked from '../../assests/img/heartLiked.svg';
+import heartUnliked from '../../assests/img/heartUnliked.svg';
+import btnChecked from '../../assests/img/btnChecked.svg';
+import btnPlus from '../../assests/img/btnPlus.svg';
+
 
 function Card({
   id,
@@ -52,7 +59,7 @@ function Card({
         </ContentLoader> :
           <>
             {onFavorite && (<div className={s.favorite} onClick={onClickFavorite}>
-              <img src={isFavorite ? '/img/heart-liked.svg' : '/img/heart-unliked.svg'} alt='Unliked' />
+              <img src={isFavorite ? `${heartLiked}` : `${heartUnliked}`} alt='Unliked' />
             </div>)}
             <img className={s.photoSneakers} width={133} height={112} src={imageUrl} alt='Sneakers' />
             <h5>{title}</h5>
@@ -64,7 +71,7 @@ function Card({
               {onPlus && <img
                 className={s.plus}
                 onClick={onClickPlus}
-                src={isItemAdded(id) ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
+                src={isItemAdded(id) ? `${btnChecked}` : `${btnPlus}`}
                 alt='Plus' />}
             </div>
           </>
