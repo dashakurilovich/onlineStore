@@ -1,13 +1,25 @@
 {
   "files": {
     "main.css": "/onlineStore/static/css/main.82eb0574.css",
-    "main.js": "/onlineStore/static/js/main.d394c0b1.js",
+    "main.js": "/onlineStore/static/js/main.9fed9acf.js",
+    "static/media/emptyCart.jpg": "/onlineStore/static/media/emptyCart.bf1db0c00e846da0ec24.jpg",
+    "static/media/completeOrder.jpg": "/onlineStore/static/media/completeOrder.bd48a7a3488e91f48e30.jpg",
+    "static/media/heartUnliked.svg": "/onlineStore/static/media/heartUnliked.3fbf988bb05f769032ecaab72e0c2728.svg",
+    "static/media/btnChecked.svg": "/onlineStore/static/media/btnChecked.890c21e6e092e231b04d7f8d3b23767a.svg",
+    "static/media/favorite.svg": "/onlineStore/static/media/favorite.fb6fc173851dd67a64d51b7306e810d1.svg",
+    "static/media/heartLiked.svg": "/onlineStore/static/media/heartLiked.2a7f884671a17364cb52939425ca405f.svg",
+    "static/media/user.svg": "/onlineStore/static/media/user.381202f7e3edbc1a00b14fbd5e529a32.svg",
+    "static/media/cart.svg": "/onlineStore/static/media/cart.5113b08fb682dc25f3856ef704a6c05d.svg",
     "index.html": "/onlineStore/index.html",
+    "static/media/lupa.svg": "/onlineStore/static/media/lupa.48c52bf5d459537e27c07f88eb08c050.svg",
+    "static/media/remove.svg": "/onlineStore/static/media/remove.b1fef0aa93fbf25374f4991d23f900d8.svg",
+    "static/media/btnPlus.svg": "/onlineStore/static/media/btnPlus.b88e94c67ea7ac0cfa69033241c96b8c.svg",
+    "static/media/arrow.svg": "/onlineStore/static/media/arrow.fc3222511ec5a224a4abf3bbf4c2566f.svg",
     "main.82eb0574.css.map": "/onlineStore/static/css/main.82eb0574.css.map",
-    "main.d394c0b1.js.map": "/onlineStore/static/js/main.d394c0b1.js.map"
+    "main.9fed9acf.js.map": "/onlineStore/static/js/main.9fed9acf.js.map"
   },
   "entrypoints": [
     "static/css/main.82eb0574.css",
-    "static/js/main.d394c0b1.js"
+    "static/js/main.9fed9acf.js"
   ]
 }
