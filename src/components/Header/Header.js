@@ -19,7 +19,7 @@ function Header(props) {
         <div className={s.headerLeft}>
           <img width={40} height={40} src={logo} alt='Logotype' />
           <div className={s.headerInfo}>
-            <h3>React sneakers</h3>
+            <h3>Women sneakers</h3>
             <p>Магазин лучших кроссовок</p>
           </div>
         </div>

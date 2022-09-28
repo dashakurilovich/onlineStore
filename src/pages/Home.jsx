@@ -35,7 +35,7 @@ function Home({  items, searchValue, onChangeSearchInput, handleClear, onAddToFa
     <div className={s.content}>
       <div className={s.middleBlock}>
         <h1>
-          {searchValue ? `Поиск по запросу: "${searchValue}"` : "Все кроссовки"}
+          {searchValue ? `Поиск по запросу: "${searchValue}"` : "Женские кроссовки"}
         </h1>
 
         <div className={s.searchBlock}>
